@@ -2,9 +2,9 @@
 #define SYSTEM_PARSER_H
 
 #include <fstream>
+#include <iostream>
 #include <regex>
 #include <string>
-#include <iostream>
 
 namespace LinuxParser {
 // Paths
