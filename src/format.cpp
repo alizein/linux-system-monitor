@@ -1,11 +1,12 @@
 #include <string>
+#include <iomanip>
 
 #include "format.h"
 
 using std::string;
 
-#define SECONDS_PER_HOUR 3600
-#define SECONDS_PER_MINUTE 60
+#define HOUR 3600
+#define MINUTE 60
 
 // DONE: Complete this helper function
 // INPUT: Long int measuring seconds
@@ -15,12 +16,14 @@ string Format::ElapsedTime(long seconds) {
   int hour, minute, second;
   string time_str;
 
-  hour = seconds / SECONDS_PER_HOUR;
-  minute = (seconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE;
-  second = (seconds % SECONDS_PER_HOUR) % SECONDS_PER_MINUTE;
+  hour = seconds / HOUR;
+  minute = (seconds % HOUR) / MINUTE;
+  second = (seconds % HOUR) % MINUTE;
 
-  time_str = std::to_string(hour) + ":" + std::to_string(minute) + ":" +
-             std::to_string(second);
-
-  return time_str;
+  std::ostringstream stream;
+  stream << std::setw(2) << std::setfill('0') << hour << ":" 
+     << std::setw(2) << std::setfill('0') << minute << ":"
+     << std::setw(2) << std::setfill('0') << second;
+     
+  return stream.str();
 }
